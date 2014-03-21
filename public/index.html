@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Node-chat</title>
+		<link rel="stylesheet" href="stylesheet.css">
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="header">Node-chat</h1>
+			<div class="content">
+				<input type="text" name="mytext" id="message">
+				<div id="messages"></div>
+			</div>
+		</div>
+	<script type="text/javascript" src="zepto.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		var socket = io.connect(window.location);
+
+		$('#message').on('keydown', function(e) {
+			if (e.which == 13) {
+				var message = $(this).val();
+				if (message.length > 2) {
+					socket.emit('message', message)
+					$(this).val('');
+				}
+			}
+		});
+		socket.on('history', function(messages) {
+			$.each(messages, function(i, message) {
+				$('#messages').prepend('<p class="message">' + message + '</p>');
+			});
+		});
+		socket.on('message', function(message) {
+			$('#messages').prepend('<p class="message">' + message + '</p>');
+		})
+	</script>
+	</body>
+</html>
