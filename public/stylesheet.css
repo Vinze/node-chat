@@ -48,7 +48,7 @@ table {
 }
 
 /*-------------------------------------
-- Some styling applied
+- Set box sizing
 -------------------------------------*/
 
 * {
@@ -57,54 +57,97 @@ table {
 	box-sizing: border-box;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600);
+/*-------------------------------------
+- Grid
+-------------------------------------*/
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.col {
+	display: inline-block;
+	float: left;
+	position: relative;	
+	min-height: 10px;
+	margin-left: 2%;
+}
+
+.col:first-child {
+	margin-left: 0;
+}
+
+.span-1 { width: 6.5%; }
+.span-2 { width: 15%; }
+.span-3 { width: 23.5%; }
+.span-4 { width: 32%; }
+.span-5 { width: 40.5%; }
+.span-6 { width: 49%; }
+.span-7 { width: 57.5%; }
+.span-8 { width: 66%; }
+.span-9 { width: 74.5%; }
+.span-10 { width: 83%; }
+.span-11 { width: 91.5%; }
+.span-12 { width: 100%; }
+
+.offset-1 { margin-left: 10.5% !important; }
+.offset-2 { margin-left: 19% !important; }
+.offset-3 { margin-left: 27.5% !important; }
+.offset-4 { margin-left: 36% !important; }
+.offset-5 { margin-left: 44.5% !important; }
+.offset-6 { margin-left: 53% !important; }
+.offset-7 { margin-left: 61.5% !important; }
+.offset-8 { margin-left: 70% !important; }
+.offset-9 { margin-left: 78.5% !important; }
+.offset-10 { margin-left: 87% !important; }
+.offset-11 { margin-left: 93.5% !important; }
+
+.offset-1:first-child { margin-left: 8.5% !important; }
+.offset-2:first-child { margin-left: 17% !important; }
+.offset-3:first-child { margin-left: 25.5% !important; }
+.offset-4:first-child { margin-left: 34% !important; }
+.offset-5:first-child { margin-left: 42.5% !important; }
+.offset-6:first-child { margin-left: 51% !important; }
+.offset-7:first-child { margin-left: 59.5% !important; }
+.offset-8:first-child { margin-left: 68% !important; }
+.offset-9:first-child { margin-left: 76.5% !important; }
+.offset-10:first-child { margin-left: 85% !important; }
+
+/*-------------------------------------
+- Basic markup
+-------------------------------------*/
 
 body {
-	background-color: #f2f2f2;
+	background-color: #e5e5e5;
+	font-family: arial;
+	font-size: 14px;
 }
 
-body, input, button {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 13px;
-}
-
-div.container {
-	width: 720px;
+.content {
 	margin: 20px auto;
+	width: 600px;
+	min-height: 300px;
 	background-color: #fff;
 	box-shadow: 0 0 5px #ccc;
 }
 
-h1.header {
-	font-size: 2em;
-	background-color: #404040;
-	padding: 10px 20px;
-	color: #fff;
+.chat {
+	border-bottom: 1px solid #ccc;
+	height: 270px;
+	padding: 10px;
 }
 
-div.content {
-	min-height: 300px;
-	padding: 20px;
-	line-height: 150%;
+.messages .time {
+	width: 50px;
 }
 
-input[type="text"] {
-	border: 1px solid #ccc;
-	padding: 6px;
-	background-color: #fff;
-	margin: 0 0 10px 0;
+.content input {
+	height: 30px;
+	border: none;
+	background-color: transparent;
+	padding: 5px;
+	margin: 0;
 	width: 100%;
-}
-
-input:focus {
-	outline: none;
-}
-
-.message {
-	border-top: 1px dotted #ccc;
-	padding: 5px 0;
-}
-
-.message:first-child {
-	border-top: none;
 }
